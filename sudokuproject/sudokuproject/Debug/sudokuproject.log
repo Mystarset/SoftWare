@@ -1,0 +1,9 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (sudokuproject.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
+  sudoku.cpp
+  Generator.cpp
+  正在生成代码...
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
+Generator.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
+  sudokuproject.vcxproj -> E:\软件工程\sudokuproject\sudokuproject\Debug\sudoku.exe
+  sudokuproject.vcxproj -> E:\软件工程\sudokuproject\sudokuproject\Debug\sudoku.pdb (Full PDB)
