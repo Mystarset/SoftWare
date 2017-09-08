@@ -1,8 +1,9 @@
 ﻿  stdafx.cpp
   sudokugame.cpp
   Dig.cpp
-e:\软件工程\sudokuproject\sudokugame\sudokugame\dig.cpp(82): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\软件工程\sudokuproject\sudokugame\sudokugame\dig.cpp(168): warning C4101: “box”: 未引用的局部变量
+e:\github\repository\software\sudokugame\sudokugame\dig.cpp(97): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
   正在生成代码...
-  sudokugame.vcxproj -> E:\软件工程\sudokuproject\sudokugame\Debug\sudokugame.exe
-  sudokugame.vcxproj -> E:\软件工程\sudokuproject\sudokugame\Debug\sudokugame.pdb (Full PDB)
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
+Dig.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
+  sudokugame.vcxproj -> E:\github\repository\SoftWare\sudokugame\Debug\sudokugame.exe
+  sudokugame.vcxproj -> E:\github\repository\SoftWare\sudokugame\Debug\sudokugame.pdb (Full PDB)

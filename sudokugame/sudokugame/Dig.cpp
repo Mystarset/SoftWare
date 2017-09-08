@@ -6,15 +6,26 @@
 #include <cstring>
 #include <cstdlib>
 #include <ctime>
-
+using namespace std;
 
 char ch[200];
 int single;
 bool pd;
+
+
 Dig::Dig()
 {
 	sum = 0;
 	memset(shudu, 0, sizeof(shudu));
+	res[1][1] = 6; res[1][2] = 1; res[1][3] = 2; res[1][4] = 3; res[1][5] = 4; res[1][6] = 5; res[1][7] = 7; res[1][8] = 8; res[1][9] = 9;
+	res[2][1] = 3; res[2][2] = 4; res[2][3] = 5; res[2][4] = 7; res[2][5] = 8; res[2][6] = 9; res[2][7] = 1; res[2][8] = 2; res[2][9] = 6;
+	res[3][1] = 7; res[3][2] = 8; res[3][3] = 9; res[3][4] = 1; res[3][5] = 2; res[3][6] = 6; res[3][7] = 3; res[3][8] = 4; res[3][9] = 5;
+	res[4][1] = 1; res[4][2] = 2; res[4][3] = 3; res[4][4] = 4; res[4][5] = 5; res[4][6] = 7; res[4][7] = 6; res[4][8] = 9; res[4][9] = 8;
+	res[5][1] = 4; res[5][2] = 5; res[5][3] = 6; res[5][4] = 8; res[5][5] = 9; res[5][6] = 1; res[5][7] = 2; res[5][8] = 3; res[5][9] = 7;
+	res[6][1] = 8; res[6][2] = 9; res[6][3] = 7; res[6][4] = 2; res[6][5] = 6; res[6][6] = 3; res[6][7] = 4; res[6][8] = 5; res[6][9] = 1;
+	res[7][1] = 2; res[7][2] = 3; res[7][3] = 1; res[7][4] = 5; res[7][5] = 7; res[7][6] = 8; res[7][7] = 9; res[7][8] = 6; res[7][9] = 4;
+	res[8][1] = 5; res[8][2] = 6; res[8][3] = 4; res[8][4] = 9; res[8][5] = 1; res[8][6] = 2; res[8][7] = 8; res[8][8] = 7; res[8][9] = 3;
+	res[9][1] = 9; res[9][2] = 7; res[9][3] = 8; res[9][4] = 6; res[9][5] = 3; res[9][6] = 4; res[9][7] = 5; res[9][8] = 1; res[9][9] = 2;
 
 }
 
@@ -22,22 +33,26 @@ Dig::Dig()
 Dig::~Dig()
 {
 }
+
 void Dig::print()
 {
-	
 	int cnt = 0;
 	for (int i = 1; i <= 9; i++)
 	{
 		for (int j = 1; j <= 9; j++)
 		{
-			ch[cnt++] = shudu[i][j] + 48;
+			if (shudu[i][j] == 0 && vis[i][j] == true) ch[cnt++] = res[i][j] + 48;
+			else
+			{
+				ch[cnt++] = shudu[i][j] + 48;
+			}
 			ch[cnt++] = ' ';
 		}
 		ch[cnt++] = '\n';
 	}
 	puts(ch);
 }
-void Dig::check(int x,int y)
+void Dig::checksingle(int x,int y)
 {
 	if (x == 9 && y > 9)
 	{
@@ -56,7 +71,7 @@ void Dig::check(int x,int y)
 	}
 	if (shudu[x][y] != 0)
 	{
-		check(x, y + 1);
+		checksingle(x, y + 1);
 	}
 	else
 	{
@@ -69,7 +84,7 @@ void Dig::check(int x,int y)
 				c1[x][i] = true;
 				r1[y][i] = true;
 				b1[box][i] = true;
-				check(x, y + 1);
+				checksingle(x, y + 1);
 				c1[x][i] = false;
 				r1[y][i] = false;
 				b1[box][i] = false;
@@ -110,7 +125,7 @@ void Dig::suiji()
 		}
 	}
 
-	for (int i = 1; i <= 8; i++)
+	for (int i = 1; i <= 13; i++)
 	{
 		n = 0;
 		x = 1; y = 1;
@@ -130,6 +145,7 @@ void Dig::suiji()
 			}
 		}
 		single = 0;
+		pd = true;
 		for (int j = 1;j <= 9; j++)
 			for (int k = 1; k <= 9; k++)
 			{
@@ -137,13 +153,6 @@ void Dig::suiji()
 				r1[j][k] = r[j][k];
 				b1[j][k] = b[j][k];
 			}
-		pd = true;
-		if (i > 3 && pd)
-		{
-			sum++;
-			print();
-			if (sum >= total) return;
-		}
 	}
 }
 int Dig::getbox(int x, int y)
@@ -160,21 +169,77 @@ int Dig::getbox(int x, int y)
 	if (x >= 7 && x <= 9 && y >= 7 && y <= 9) box = 9;
 	return box;
 }
+bool Dig::checkrule()
+{
+	int a[10];
+	memset(a, 0, sizeof(a));
+	int box;
+	for (int i = 1; i <= 9; i++)
+	{
+		for (int j = 1; j <= 9; j++)
+		{
+			box = getbox(i, j);
+			if (shudu[i][j] == 0 && vis[i][j] == false) a[box]++;
+		}
+	}
+	for (int i = 1; i <= 9; i++)
+		if (a[i] < 2) return false;
+	
+	return true;
+}
+void Dig::dfs(int x, int y, int n)
+{
+	if (sum >= total) return;
+	if (n == 7 && checkrule())
+	{
+		print();
+		sum++;
+		return;
+	}
+	if (n == 7) return;
+	if (x == 9 && y > 9) return;
+	if (y > 9)
+	{
+		x = x + 1;
+		y = 1;
+	}
+	if (shudu[x][y] != 0) dfs(x, y + 1, n);
+	else
+	{
+		for (int i = 0; i <= 1; i++)
+		{
+			if (i == 0)
+			{
+				vis[x][y] = true;
+				dfs(x, y + 1, n + 1);
+				vis[x][y] = false;
+				
+			}
+			else
+			{
+				dfs(x, y + 1, n);
+			}
+		}
+	}
+}
 void Dig::get(int n)
 {
 	total = n;
-	while (sum <= total)
+
+	while (true)
 	{
-		int box;
 		memset(c, true, sizeof(c));
 		memset(r, true, sizeof(r));
 		memset(b, true, sizeof(b));
-		for (int x = 1;x <= 9 ;x++)
+		for (int x = 1; x <= 9; x++)
 			for (int y = 1; y <= 9; y++)
 			{
-				scanf("%d", &shudu[x][y]);
-	
+				shudu[x][y] = res[x][y];
 			}
 		suiji();
+		checksingle(1, 1);
+		if (pd) break;
 	}
+	memset(vis, false, sizeof(vis));
+	dfs(1, 1, 0);
 }

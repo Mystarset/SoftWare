@@ -32,7 +32,6 @@ bool check(string str)
 int main(int argc,char* argv[])
 {
 	string str1, str2;
-	freopen("input.txt", "r", stdin);
 	freopen("sudoku.txt", "w", stdout);
 	if (argc == 1 || argc == 2 || argc > 3)
 	{
