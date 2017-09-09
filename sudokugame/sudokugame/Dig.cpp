@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Dig.h"
 #include <iostream>
 #include <cstdio>
@@ -52,7 +51,7 @@ void Dig::print()
 	}
 	puts(ch);
 }
-void Dig::checksingle(int x,int y)
+void Dig::checksingle(int x, int y)
 {
 	if (x == 9 && y > 9)
 	{
@@ -109,10 +108,10 @@ void Dig::suiji()
 			{
 				n++;
 				int box;
-				box = getbox(x+dx, y+dy);
-				c[x+dx][shudu[x+dx][y+dy]] = false;
-				r[y+dy][shudu[x+dx][y+dy]] = false;
-				b[box][shudu[x+dx][y+dy]] = false;
+				box = getbox(x + dx, y + dy);
+				c[x + dx][shudu[x + dx][y + dy]] = false;
+				r[y + dy][shudu[x + dx][y + dy]] = false;
+				b[box][shudu[x + dx][y + dy]] = false;
 
 				shudu[x + dx][y + dy] = 0;
 			}
@@ -120,7 +119,7 @@ void Dig::suiji()
 		y = y + 3;
 		if (y > 9)
 		{
-			y = 1; 
+			y = 1;
 			x = x + 3;
 		}
 	}
@@ -146,7 +145,7 @@ void Dig::suiji()
 		}
 		single = 0;
 		pd = true;
-		for (int j = 1;j <= 9; j++)
+		for (int j = 1; j <= 9; j++)
 			for (int k = 1; k <= 9; k++)
 			{
 				c1[j][k] = c[j][k];
@@ -184,7 +183,7 @@ bool Dig::checkrule()
 	}
 	for (int i = 1; i <= 9; i++)
 		if (a[i] < 2) return false;
-	
+
 	return true;
 }
 void Dig::dfs(int x, int y, int n)
@@ -213,7 +212,7 @@ void Dig::dfs(int x, int y, int n)
 				vis[x][y] = true;
 				dfs(x, y + 1, n + 1);
 				vis[x][y] = false;
-				
+
 			}
 			else
 			{

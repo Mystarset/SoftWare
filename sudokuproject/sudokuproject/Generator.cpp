@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "generator.h"
 #include <iostream>
 #include <cstdio>
@@ -15,14 +14,14 @@ void generator::print()
 	int cnt = 0;
 	for (int i = 1; i <= 9; i++)
 	{
-		
+
 		for (int j = 1; j <= 9; j++)
 		{
 			ch[cnt++] = shudu[i][j];
 			ch[cnt++] = ' ';
 		}
 		ch[cnt++] = '\n';
-		
+
 	}
 	puts(ch);
 }
