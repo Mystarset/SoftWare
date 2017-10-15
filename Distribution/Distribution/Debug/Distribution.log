@@ -1,0 +1,19 @@
+﻿  Student.cpp
+  Output.cpp
+  Matching.cpp
+  main.cpp
+  Input.cpp
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(44): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(53): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(64): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(76): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(89): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(102): warning C4018: “<”: 有符号/无符号不匹配
+e:\软件工程\第六次作业-结对编程第二次\distribution\distribution\input.cpp(113): warning C4018: “<”: 有符号/无符号不匹配
+  Department.cpp
+  CreateJsonInput.cpp
+  正在生成代码...
+LINK : warning LNK4075: 忽略“/INCREMENTAL”(由于“/PROFILE”规范)
+CreateJsonInput.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
+  Distribution.vcxproj -> E:\软件工程\第六次作业-结对编程第二次\Distribution\Debug\Distribution.exe
+  Distribution.vcxproj -> E:\软件工程\第六次作业-结对编程第二次\Distribution\Debug\Distribution.pdb (Full PDB)
